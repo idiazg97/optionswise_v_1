@@ -1,0 +1,420 @@
+.home-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: #0E2D1C;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    /* background-image: url(../assets/backgrounds/forrestbg.png) ; */
+    background-repeat: no-repeat;
+}
+
+.header-container {
+    height: 7%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 3%;
+}
+
+.logo-image {
+    height: 50%;
+    width: auto;
+    margin: 2%;
+}
+
+.step-tracker-container {
+    height: 15%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-container {
+    height: 80%;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ai-gif {
+    height: 100%;
+    width: auto;
+    border-radius: 50%;
+    display: flex;
+    z-index: 3;
+    margin: 3%;
+    margin-inline: 3%;
+    box-shadow: 0 10px 25px 0 rgba( 100, 254, 251, 0.37 );
+}
+
+.chart-container {
+    width: 75%;
+    height: 90%;
+    margin-block: 5%;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.ticker-name-container {
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: sans-serif;
+    color: white;
+    font-size: 1.25vmax;
+    margin: 0px;
+}
+
+.ticker-info-container {
+    width: fit-content;
+    min-width: 15%;
+    max-width: 100%;
+    height: 10%;
+    backdrop-filter: blur( 20px );
+    -webkit-backdrop-filter: blur( 20px );
+    background-color: rgba(232, 200, 200, 0.185);
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom-right-radius: 10px;
+    padding: 2%;
+    z-index: 10;
+    border-top-left-radius: 10px;
+}
+
+.ticker-logo {
+    height: 80%;
+    width: auto;
+    z-index: 3;
+    margin: 0px;
+    margin-right: 5%;
+}
+
+.current-price {
+    font-family: sans-serif;
+    color: white;
+    font-size: 1.5vmax;
+    text-align: end;
+    width: fit-content;
+    margin: 0px;
+}
+
+.scanner-view {
+    width: 75%;
+    background-color: rgba(232, 200, 200, 0.185);
+    backdrop-filter: blur( 8px );
+    -webkit-backdrop-filter: blur( 8px );
+    position: absolute;
+    z-index: 1;
+    justify-self: flex-end;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.scanner-bar {
+    width: 15px;
+    height: 100%;
+    border-radius: 20px;
+    background-color: white;
+    position: absolute;
+    left: -1%;
+    box-shadow: #42E8BD 10px 0px 50px;
+}
+
+.svg-box {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.news-container {
+    position: absolute;
+    height: 38%;
+    width: fit-content;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.news-image {
+    height: 90%;
+    width: auto;
+    object-fit: contain;
+}
+
+.news-scanner-view {
+    width: 50%;
+    height: 40%;
+    border-radius: 10px;
+    background-color: rgba(232, 200, 200, 0.185);
+    backdrop-filter: blur( 1px );
+    -webkit-backdrop-filter: blur( 1px );
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    justify-items: flex-end;
+    justify-self: flex-end;
+}
+
+.news-scanner-bar {
+    width: 100%;
+    height: 15px;
+    border-radius: 20px;
+    background-color: white;
+    position: absolute;
+    box-shadow: #42E8BD 10px 0px 50px;
+}
+
+.fundamentals-container {
+    position: absolute;
+    height: 38%;
+    width: fit-content;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-inline: 2%;
+}
+
+.fundamentals-image {
+    height: 90%;
+    width: auto;
+    max-width: 250px;
+    object-fit: contain;
+}
+
+.fundamentals-scanner-view {
+    width: 50%;
+    background-color: rgba(232, 200, 200, 0.185);
+    backdrop-filter: blur( 1px );
+    -webkit-backdrop-filter: blur( 1px );
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    justify-items: flex-end;
+    justify-self: flex-end;
+    border-radius: 10px;
+}
+
+.fundamentals-scanner-bar {
+    width: 100%;
+    height: 15px;
+    border-radius: 20px;
+    background-color: white;
+    position: absolute;
+    box-shadow: #42E8BD 10px 0px 50px;
+}
+
+.idea-container {
+    width: auto;
+    max-width: 90%;
+    height: 38%;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.idea-image {
+    height: 90%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.ai-gif-container {
+    height: 15%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15%;
+}
+
+.intro-title {
+    height: 100%;
+    width: 90%;
+    padding-left: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 3%;
+}
+
+.intro-title-text {
+    font-family: sans-serif;
+    color: white;
+    font-size: clamp(24px, 5.5vw, 46px);
+    text-align: center;
+    margin: 0px;
+    margin-left: 0%;
+    margin-top: 2%;
+    width: 100%;
+    white-space: nowrap;
+    text-align: start;
+}
+
+/* .intro-title-text::after{
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    -webkit-animation: ellipsis steps(4,end) 900ms infinite;      
+    animation: ellipsis steps(4,end) 900ms infinite;
+    content: "\2026"; 
+    width: 0px;
+} */
+
+.newsletter-container {
+    height: 20%;
+    margin-top: 5%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.call-to-action {
+    font-family: sans-serif;
+    color: rgb(132, 127, 127);
+    font-size: clamp(24px, 2vw, 60px);
+    margin: 0px;
+    margin-bottom: 2%;
+    font-weight: 200;
+}
+
+.sign-up-button-container {
+    width: 40%;
+    height: 30%;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    backdrop-filter: blur( 4px );
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: .25%;
+}
+
+.input-email {
+    width: 68%;
+    margin-right: 2%;
+    font-family: sans-serif;
+    color: white;
+    font-size: clamp(20px, 1.5vw, 60px);
+    background-color: transparent;
+    border: 0px;
+    height: 100%;
+    padding-left: 2.5%;
+}
+
+.sign-up-button {
+    border-radius: 10px;
+    background-color: #0E2D1C;
+    border: 0px;
+    width: 30%;
+    height: 100%;
+}
+
+.sign-up-text {
+    font-family: sans-serif;
+    color: white;
+    font-size: clamp(20px, 1.5vw, 60px);
+    margin: 2%
+}
+
+.input-email::placeholder {
+    color: rgba(255, 255, 255, 0.677);
+}
+
+.verify-window {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0%;
+    left: 0%;
+    background-color: rgba(96, 96, 96, 0.509);
+    z-index: 10;
+}
+
+.signed-up-text { 
+    font-family: sans-serif;
+    color: white;
+    font-size: 2vmax;
+    margin: 0px;
+    line-height: 150%;
+    font-weight: 500;
+    text-align: flex-start;
+    overflow: hidden;
+    border-right: .15em solid #42E8BD; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation: 
+      typing 3.5s steps(40, end),
+      blink-caret .75s step-end infinite;
+}
+/* The typing effect */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 80% }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #42E8BD; }
+  }
+
+@keyframes ellipsis {
+    to {
+      width: 1.25em;    
+    }
+  }
+  
+@-webkit-keyframes ellipsis {
+    to {
+        width: 1.25em;    
+    }
+}

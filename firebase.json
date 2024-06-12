@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/optionswise_v_1/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/optionswise_v_1/browser/**",
+        "destination": "/optionswise_v_1/index.html"
+      }
+    ]
+  }
+}

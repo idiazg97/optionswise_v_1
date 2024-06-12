@@ -1,0 +1,89 @@
+/* phone-number-dropdown.component.css */
+.phone-number-dropdown {
+    font-family: sans-serif;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border-right: 1px solid rgba( 255, 255, 255, 0.18 );
+    color: white;
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  }
+  
+  .selected-country {
+    display: flex;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .country-code {
+    font-weight: bold;
+  }
+  
+  .arrow-down {
+    margin-left: auto; /* Pushes the arrow to the end of the container */
+  }
+  
+  .country-list {
+    position: absolute;
+    overflow: scroll;
+    max-height: 90px;
+    width: 475%;
+    margin-left: 10%;
+    z-index: 10;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    -webkit-backdrop-filter: blur( 4px );
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    backdrop-filter: blur( 4px );
+  }
+  
+  .country-item {
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+    background: rgba( 255, 255, 255, 0.25 );
+
+  }
+  
+  .country-item:last-child {
+    border-bottom: none;
+  }
+  
+  .country-item:hover {
+    background: rgba( 255, 255, 255, 0.25 );
+  }
+  /* phone-number-dropdown.component.css */
+.phone-number-dropdown {
+    position: relative;
+    font-family: sans-serif;
+  }
+  
+  .selected-country {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .flag-icon {
+    width: 20px;
+    height: 15px;
+    margin-right: 10px;
+  }
+  
+  .country-code {
+    font-weight: bold;
+  }
+  
+  .arrow-down {
+    font-size: 1vmax;
+    margin-left: auto; /* Pushes the arrow to the end of the container */
+  }

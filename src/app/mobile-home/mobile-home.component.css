@@ -1,0 +1,9 @@
+.main-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    background-color: #0E2D1C;
+    flex-direction: column;
+    padding: 0px;
+}
