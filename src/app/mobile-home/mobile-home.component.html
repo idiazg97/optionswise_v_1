@@ -3,5 +3,6 @@
 <div [hidden]="loading" class="main-container">
     <app-header style="height: 25vh;"></app-header>
     <app-intro-animation style="height: 50vh;" *ngIf="getlength()" [candlesticks]="candlesticks"></app-intro-animation>
-    <app-sign-up-input style="height: 25vh; width: 90%;"></app-sign-up-input>
+    <p class="call-to-action">[ coming soon ]</p>
+    <app-sign-up-input style="height: 10vh; width: 90%; margin-top: 3vh;" (popupMessageEvent)="setPopup($event)"></app-sign-up-input>
 </div>

@@ -7,3 +7,12 @@
     flex-direction: column;
     padding: 0px;
 }
+
+.call-to-action {
+    font-family: sans-serif;
+    color: rgb(132, 127, 127);
+    font-size: clamp(24px, 2vw, 60px);
+    margin: 0px;
+    margin-top: 5vh;
+    font-weight: 200;
+}

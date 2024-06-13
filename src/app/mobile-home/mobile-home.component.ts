@@ -3,7 +3,7 @@ import { LoadingScreenComponent } from '../loading-screen/loading-screen.compone
 import { IntroAnimationComponent } from '../intro-animation/intro-animation.component';
 import { HeaderComponent } from '../header/header.component';
 import { StockServiceService } from '../services/stock-service.service';
-import { SignUpInputComponent } from '../sign-up-input/sign-up-input.component';
+import { PhoneNumber, SignUpInputComponent } from '../sign-up-input/sign-up-input.component';
 import { CommonModule } from '@angular/common';
 
 
@@ -32,7 +32,9 @@ export interface Candlestick {
 export class MobileHomeComponent implements OnInit {
   loading: boolean = true
   public candlesticks: any
+  phoneNumber: string = ''
   currentPrice: any
+  popUp: boolean = false
 
   constructor(private stockService: StockServiceService) {
   }
@@ -54,4 +56,11 @@ export class MobileHomeComponent implements OnInit {
       return false
     }
    }
+   
+   setPopup($event: PhoneNumber) {
+    
+    this.phoneNumber = $event.number.replace(' ', '')
+    this.popUp = $event.status
+    console.log(this.phoneNumber)
+  }
 }
