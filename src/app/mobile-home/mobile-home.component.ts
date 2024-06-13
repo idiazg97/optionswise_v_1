@@ -5,6 +5,7 @@ import { HeaderComponent } from '../header/header.component';
 import { StockServiceService } from '../services/stock-service.service';
 import { PhoneNumber, SignUpInputComponent } from '../sign-up-input/sign-up-input.component';
 import { CommonModule } from '@angular/common';
+import { SmsVerificationComponent } from '../sms-verification/sms-verification.component';
 
 
 export interface Candlestick {
@@ -25,7 +26,7 @@ export interface Candlestick {
 @Component({
   selector: 'app-mobile-home',
   standalone: true,
-  imports: [LoadingScreenComponent, CommonModule, IntroAnimationComponent, HeaderComponent, SignUpInputComponent],
+  imports: [LoadingScreenComponent, CommonModule, IntroAnimationComponent, HeaderComponent, SignUpInputComponent,SmsVerificationComponent],
   templateUrl: './mobile-home.component.html',
   styleUrl: './mobile-home.component.css'
 })
@@ -58,7 +59,6 @@ export class MobileHomeComponent implements OnInit {
    }
    
    setPopup($event: PhoneNumber) {
-    
     this.phoneNumber = $event.number.replace(' ', '')
     this.popUp = $event.status
     console.log(this.phoneNumber)
