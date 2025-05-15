@@ -168,6 +168,7 @@ export class IntroAnimationComponent implements OnInit, AfterViewInit {
     console.log(this.candlesticks.length)
     if (this.candlesticks) {
       this.candleSticksCount = this.candlesticks.length;
+      this.currentPrice = this.candlesticks[this.candleSticksCount-1].close
       if (this.candleSticksCount > 0) {
         this.startAnimations();
       }

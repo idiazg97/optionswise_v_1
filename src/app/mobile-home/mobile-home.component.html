@@ -1,12 +1,17 @@
 <app-loading-screen [hidden]="!loading"></app-loading-screen>
 
-<div [hidden]="loading" class="main-container">
-    <app-header style="height: 25vh;"></app-header>
-    <app-intro-animation style="height: 50vh;" *ngIf="getlength()" [candlesticks]="candlesticks"></app-intro-animation>
+<div [hidden]="loading" *ngIf="!signedUp" class="main-container">
+    <app-header style="width: 100%; padding: 5px; padding-top: 5%;"></app-header>
+    <app-intro-animation style="height: 45vh;" *ngIf="getlength()" [candlesticks]="candlesticks"></app-intro-animation>
     <p class="call-to-action">[ coming soon ]</p>
-    <app-sign-up-input style="height: 10vh; width: 90%; margin-top: 3vh;" (popupMessageEvent)="setPopup($event)"></app-sign-up-input>
+    <app-sign-up-input style="height: 10vh; width: 90%; margin-top: 4vh;" (popupMessageEvent)="setPopup($event)"></app-sign-up-input>
 </div>
 
-<div *ngIf="popUp" style="background-color: rgba(184, 183, 183, 0.347); width: 100%; height: 100%; position: absolute; top: 0%; display: flex; justify-content: center; align-items: center;">
-    <app-sms-verification style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;"></app-sms-verification>
+<div *ngIf="popUp" style="background-color: rgba(184, 183, 183, 0.347); width: 100vw; height: 100vh; position: absolute; top: 0%; display: flex; justify-content: center; align-items: center;">
+    <app-sms-verification [phoneNumber]="phoneNumber" (messageEmitter)="setPopup($event)" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;"></app-sms-verification>
+</div>
+
+<div  *ngIf="this.signedUp" style="width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: #0E2D1C;">
+    <img src="assets/logos/optionswiseLG.svg" style="width: 70%; height: 30%;"/>
+    <p class="signed-up-text">welcome to the trading revolution!</p>
 </div>

@@ -1,1 +1,3 @@
-<app-mobile-home></app-mobile-home>
+
+<app-mobile-home *ngIf="isMobile"></app-mobile-home>
+<app-web-home *ngIf="!isMobile"></app-web-home>

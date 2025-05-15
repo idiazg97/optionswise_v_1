@@ -3,7 +3,9 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } 
 import { PhoneServiceService, PhoneArea } from '../phone-service.service';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-
+import { initializeApp } from "firebase/app";
+import { getAuth, RecaptchaVerifier, signInWithPhoneNumber, ConfirmationResult } from "firebase/auth";
+import { environment } from '../../../src/environments/environments';
 
 export interface SMSVerStatus {
   popUpClose: boolean;
@@ -15,20 +17,20 @@ export interface SMSVerStatus {
   standalone: true,
   imports: [MatIconModule, CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './sms-verification.component.html',
-  styleUrl: './sms-verification.component.css'
+  styleUrls: ['./sms-verification.component.css']
 })
-export class SmsVerificationComponent {
+export class SmsVerificationComponent implements OnInit, AfterViewInit, OnDestroy {
   verificationForm: FormGroup;
   verificationCode: string[] = ['', '', '', '', '', ''];
-  phoneNumberAreas: PhoneArea[]
-  // recaptchaVerifier?: RecaptchaVerifier;
-  // confirmationResult?: ConfirmationResult;
+  phoneNumberAreas: PhoneArea[];
+  recaptchaVerifier!: RecaptchaVerifier;
+  confirmationResult?: ConfirmationResult;
   recaptchaVerified: boolean = false;
-  @Output() messageEmitter = new EventEmitter<SMSVerStatus>()
-  @Input() phoneNumber?: string
+  @Output() messageEmitter = new EventEmitter<SMSVerStatus>();
+  @Input() phoneNumber?: string;
 
   constructor(private formBuilder: FormBuilder, private phoneService: PhoneServiceService) {
-    this.phoneNumberAreas = this.phoneService.getPhoneNumbers()
+    this.phoneNumberAreas = this.phoneService.getPhoneNumbers();
     this.verificationForm = this.formBuilder.group({
       digit1: ['', [Validators.required, Validators.maxLength(1)]],
       digit2: ['', [Validators.required, Validators.maxLength(1)]],
@@ -37,106 +39,104 @@ export class SmsVerificationComponent {
       digit5: ['', [Validators.required, Validators.maxLength(1)]],
       digit6: ['', [Validators.required, Validators.maxLength(1)]],
     });
+
+    // Initialize Firebase
+    initializeApp(environment.firebase);
   }
 
   ngOnInit(): void {
-    // this.loadRecaptchaVerifier()
+    this.loadRecaptchaVerifier();
   }
 
   ngAfterViewInit(): void {
-    // this.requestVerificationCode()
+    this.recaptchaVerifier.render().then((widgetId) => {
+      console.log('Recaptcha rendered with widget ID:', widgetId);
+    }).catch((error) => {
+      console.error('Error rendering reCAPTCHA:', error);
+    });
   }
 
   ngOnDestroy(): void {
-    // this.recaptchaVerifier = undefined
+
   }
 
   onKeyUp(event: any, nextInputId: string, previousInputId: string): void {
     const input = event.target;
     const value = input.value;
     const key = event.key;
-  
-    // Clear the input if it's not a number and not empty (to allow backspace/delete to work)
+
     if (value && !value.match(/[0-9]/)) {
       input.value = '';
-      // Do not attempt to move focus if the input is invalid
       return;
     }
-  
-    // Focus next field if a number is entered and a next field exists
+
     if (value && key !== 'Backspace' && key !== 'Delete' && nextInputId !== input.id) {
       const nextInput = document.getElementById(nextInputId);
       nextInput?.focus();
-    } 
-    // Focus previous field if Backspace/Delete is pressed, current field is empty, and a previous field exists
-    else if ((key === 'Backspace' || key === 'Delete') && !value && previousInputId) {
+    } else if ((key === 'Backspace' || key === 'Delete') && !value && previousInputId) {
       const previousInput = document.getElementById(previousInputId);
       previousInput?.focus();
     }
   }
-  
-  
 
   onSubmit(): void {
-    // Here you would typically gather the form data and use it
-    // for example, sending it to a backend service to verify the SMS code
     if (this.verificationForm.valid) {
       const verificationCode = Object.values(this.verificationForm.value).join('');
-      // this.verifyCode(verificationCode)
+      this.verifyCode(verificationCode);
       console.log('Submitted Verification Code:', verificationCode);
-      // Add your logic to handle the verification code submission
     }
   }
 
-  // async requestVerificationCode(): Promise<void> {
-  //   if (this.recaptchaVerifier) {
-  //     console.log("CHECK", this.phoneNumber)
-  //     if (this.phoneNumber) {
-  //       await this.phoneService.signUp(this.phoneNumber, this.recaptchaVerifier).then((res) => {
-  //         console.log("KIKI", res)
-  //         this.confirmationResult = res
-  //       })
-  //     }
-  //   }
-  // }
+  async requestVerificationCode(): Promise<void> {
+    const auth = getAuth();
+    if (this.recaptchaVerifier) {
+      if (this.phoneNumber) {
+        try {
+          this.confirmationResult = await signInWithPhoneNumber(auth, this.phoneNumber, this.recaptchaVerifier);
+          console.log("Confirmation result:", this.confirmationResult);
+          this.recaptchaVerified = true; // Set recaptchaVerified to true when request is successful
+        } catch (error) {
+          console.error("Error during sign-in with phone number:", error);
+        }
+      }
+    }
+  }
 
-  // async verifyCode(code: string) {
-  //   await this.confirmationResult?.confirm(`${code}`).then((res) => {
-  //     console.log("JUICE", res)
-  //     if (res) {
-  //       this.closeWindow(true)
-  //     }
-  //   }).catch(e => {
-  //     alert("Wrong Code")
-  //     console.log("EErr", e)
-  //   })
-  // }
+  async verifyCode(code: string): Promise<void> {
+    try {
+      if (this.confirmationResult) {
+        await this.confirmationResult.confirm(code);
+        this.closeWindow(true);
+      }
+    } catch (error) {
+      alert("Wrong Code");
+      console.error("Error verifying code:", error);
+    }
+  }
 
-  // loadRecaptchaVerifier(): void {
-  //   // Make sure this method is idempotent or checks if the verifier already exists
-  //   this.recaptchaVerifier = new RecaptchaVerifier('recaptcha-container', {
-  //     'size': 'normal',
-  //     'callback': (response: any) => {
-  //       console.log(response)
-  //       // Callback code here
-  //       const container = document.getElementById('recaptcha-container');
-  //       if (container) {
-  //         container.style.display = 'none'; // Hides the container
-  //         // Alternatively, to remove the element from DOM: container.remove();
-  //       }
-  //       this.recaptchaVerified =  true
+  loadRecaptchaVerifier(): void {
+    const auth = getAuth();
+    const container = document.getElementById('recaptcha-container');
+    this.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
+      size: 'normal',
+      callback: (response: any) => {
+        setTimeout(()=> {
+          this.requestVerificationCode().then(() => {
+            this.recaptchaVerified = true; // Set recaptchaVerified to true when reCAPTCHA is solved
+            this.recaptchaVerifier.clear();
+          })
+        }, 1000)
+      }
+    });
 
-  //     }
-  //   }, this.auth);
+    this.recaptchaVerifier.render().then((widgetId) => {
+      console.log('Recaptcha rendered with widget ID:', widgetId);
+    }).catch((error) => {
+      console.error('Error rendering reCAPTCHA:', error);
+    });
+  }
 
-  //   this.recaptchaVerifier.render().then((widgetId) => {
-  //     // Store widgetId if needed for later
-  //   }).catch((error) => {
-  //     console.error('Error rendering ReCAPTCHA', error);
-  //   });
-  // }
-
-  closeWindow(verified: boolean) {
-    this.messageEmitter.emit({popUpClose: false, smsVerified: verified})
+  closeWindow(verified: boolean): void {
+    this.messageEmitter.emit({ popUpClose: false, smsVerified: verified });
   }
 }

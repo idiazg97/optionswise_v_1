@@ -1,0 +1,24 @@
+<app-loading-screen [hidden]="!loading"></app-loading-screen>
+
+<div [hidden]="loading" *ngIf="!signedUp" class="main-container">
+    <div class="left-hand">
+        <app-app-header-web style="width: 100%;"></app-app-header-web>
+        <p class="call-to-action">[ coming soon ]</p>
+    </div>
+    <div class="right-hand">
+        <!-- <app-intro-animation style="height: 45vh;" *ngIf="getlength()" [candlesticks]="candlesticks"></app-intro-animation> -->
+        <img class="anim-gif" src="assets/gifs/intro-vid.gif" />
+        <div class="sign-up-container">
+            <app-sign-up-input-web (popupMessageEvent)="setPopup($event)" style="width: 80%; height: 100%;"></app-sign-up-input-web>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="popUp" style="background-color: rgba(184, 183, 183, 0.347); width: 100vw; height: 100vh; position: absolute; top: 0%; display: flex; justify-content: center; align-items: center;">
+    <app-sms-verification-web [phoneNumber]="phoneNumber" (messageEmitter)="setPopup($event)" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;"></app-sms-verification-web>
+</div>
+
+<div  *ngIf="this.signedUp" style="width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: #0E2D1C;">
+    <img src="assets/logos/optionswiseLG.svg" style="width: 70%; height: 30%;"/>
+    <p class="signed-up-text">welcome to the trading revolution!</p>
+</div>

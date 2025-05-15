@@ -1,0 +1,70 @@
+<div class="sms-confirmation">
+    <div id="recaptcha-container" style="height: 12%; width: 80%; display: flex; justify-content: center; align-items: center;"></div>
+    <div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; flex-direction: column;" *ngIf="recaptchaVerified">
+      <mat-icon style="cursor: pointer; height: 10%; width: 10%; font-size: 2vmax; color: white; background-color: transparent; display: flex; justify-content: center; align-items: center; position: absolute; top: 0%; right: 0%;" (click)="closeWindow(false)" fontIcon="close"></mat-icon>
+      <mat-icon fontIcon="phone_iphone" style="color: white; font-size: 5vmax; height: fit-content; width: fit-content;"/>
+      <p style="font-size: 4vmax; color: white;">check your texts</p>
+      <p style="color: white; font-size: 2vmax;">we sent a verification code to {{ phoneNumber }}</p>
+      <form class="form" [formGroup]="verificationForm" (ngSubmit)="onSubmit()">
+        <div class="inputs">
+          <input
+            type="text"
+            formControlName="digit1"
+            id="digit1"
+            inputmode="numeric"
+            (keyup)="onKeyUp($event, 'digit2', '')"
+            maxlength="1"
+            autofocus 
+            autocomplete="one-time-code"
+            />
+          <input
+            type="text"
+            formControlName="digit2"
+            inputmode="numeric"
+            id="digit2"
+            (keyup)="onKeyUp($event, 'digit3', 'digit1')"
+            maxlength="1" 
+            autocomplete="one-time-code"
+            />
+          <input
+            type="text"
+            formControlName="digit3"
+            inputmode="numeric"
+            id="digit3"
+            (keyup)="onKeyUp($event, 'digit4', 'digit2')"
+            maxlength="1" 
+            autocomplete="one-time-code"
+            />
+          <input
+            type="text"
+            formControlName="digit4"
+            inputmode="numeric"
+            id="digit4"
+            (keyup)="onKeyUp($event, 'digit5', 'digit3')"
+            maxlength="1" 
+            autocomplete="one-time-code"
+            />
+          <input
+            type="text"
+            formControlName="digit5"
+            inputmode="numeric"
+            id="digit5"
+            (keyup)="onKeyUp($event, 'digit6', 'digit4')"
+            maxlength="1" 
+            autocomplete="one-time-code"
+            />
+          <input
+            type="text"
+            formControlName="digit6"
+            inputmode="numeric"
+            id="digit6"
+            (keyup)="onKeyUp($event, '', 'digit5')"
+            maxlength="1" 
+            autocomplete="one-time-code"
+            />
+        </div>
+        <button type="submit" [disabled]="!verificationForm.valid">verify</button>
+      </form>
+    </div>
+  </div>
+  

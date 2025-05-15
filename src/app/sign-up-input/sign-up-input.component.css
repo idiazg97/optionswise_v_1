@@ -1,6 +1,6 @@
 
 .sign-up-button-container {
-    width: 90%;
+    width: 95%;
     height: 80%;
     max-height: 100px;
     background: rgba( 255, 255, 255, 0.25 );
@@ -21,11 +21,11 @@
     margin-right: 2%;
     font-family: sans-serif;
     color: white;
-    font-size: clamp(20px, 1.5vw, 60px);
+    font-size: 16px;
     background-color: transparent;
     border: 0px;
     height: 100%;
-    padding-left: 2.5%;
+    padding-left: 5%;
 }
 
 .input-email:focus {

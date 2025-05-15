@@ -8,8 +8,8 @@
     ],
     "rewrites": [
       {
-        "source": "/optionswise_v_1/browser/**",
-        "destination": "/optionswise_v_1/index.html"
+        "source": "**",
+        "destination": "/index.html"
       }
     ]
   }

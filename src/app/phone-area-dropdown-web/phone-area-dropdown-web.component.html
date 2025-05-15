@@ -1,0 +1,16 @@
+<!-- phone-number-dropdown.component.html -->
+<div class="phone-number-dropdown" #button [ngStyle]="{'background-color': showDropdown ? 'rgba( 255, 255, 255, 0.25 )' : 'transparent'}">
+    <div class="selected-country" (click)="showDropdown = !showDropdown">
+      <!-- <img [src]="selectedCountry.flagIcon" [alt]="selectedCountry.name" class="flag-icon"> -->
+      <span style="font-size: 1.5vmax; margin-right: 5%;">{{ selectedCountry.flag}}</span>
+      <span style="font-size: 1vmax; margin-right: 10%; font-size: 16px;">{{ selectedCountry.country }}</span>
+      <mat-icon *ngIf="!showDropdown" fontIcon="expand_more"></mat-icon>
+      <mat-icon *ngIf="showDropdown" fontIcon="expand_less"></mat-icon>
+    </div>
+    <div class="country-list" *ngIf="showDropdown" [ngStyle]="{'top': (button.offsetTop + button.offsetHeight+1) + 'px', 'left': (button.offsetLeft - 5) + 'px'}">
+      <div class="country-item" *ngFor="let country of countries" (click)="onSelect(country)">
+        <!-- <img [src]="country.flagIcon" [alt]="country.name" class="flag-icon"> -->
+        <span class="country-name">{{ country.text }}</span>
+      </div>
+    </div>
+</div>

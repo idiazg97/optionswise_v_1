@@ -1,13 +1,13 @@
 <div style="width: 100%; height: 100%; display: flex; justify-content: flex-start; align-items: center; flex-direction: column; display: flex; justify-content: center; align-items: center;">
     <div class="sign-up-button-container">
-        <app-phone-area-dropdown style="width: 25%; height: 100%;" (messageEvent)="receiveMessage($event)"></app-phone-area-dropdown>
+        <app-phone-area-dropdown style="width: 30%; height: 100%;" (messageEvent)="receiveMessage($event)"></app-phone-area-dropdown>
         <input class="input-email" type="tel" [(ngModel)]="phoneNumber" (ngModelChange)="onInputChange($event)" placeholder="phone number" maxlength="14" inputmode="numeric" name="phone" appPhoneNumberValidator #phonefield="ngModel" />
         
         <!-- Adjusted access to 'invalidPhoneNumber' using bracket notation -->
     
     
         <button class="sign-up-button" (click)="sendMessage()" [disabled]="!phonefield.valid">
-            <p class="sign-up-text">notify me</p>
+            <p class="sign-up-text">notify</p>
         </button>
     </div>
     

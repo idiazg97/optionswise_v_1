@@ -12,7 +12,7 @@
   }
 
   .form {
-    width: 60%;
+    width: 80%;
     height: 25%;
   }
   
@@ -30,7 +30,8 @@
   }
   
   .sms-confirmation input {
-    width: 8%;
+    width: 15%;
+    margin-inline: 1%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -39,7 +40,7 @@
     background: #0E2D1C;
     transition: border-color 0.3s;
     color: white;
-    font-size: 1.5vmax;
+    font-size: 16px;
   }
   
   .sms-confirmation input:focus {

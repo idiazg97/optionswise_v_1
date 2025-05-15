@@ -36,6 +36,7 @@ export class MobileHomeComponent implements OnInit {
   phoneNumber: string = ''
   currentPrice: any
   popUp: boolean = false
+  signedUp: boolean = false
 
   constructor(private stockService: StockServiceService) {
   }
@@ -58,9 +59,15 @@ export class MobileHomeComponent implements OnInit {
     }
    }
    
-   setPopup($event: PhoneNumber) {
-    this.phoneNumber = $event.number.replace(' ', '')
-    this.popUp = $event.status
-    console.log(this.phoneNumber)
+   setPopup($event: any) {
+    if ($event.number) {
+      this.phoneNumber = $event.number.replace(' ', '')
+      this.popUp = $event.status
+      console.log("Submitted", this.phoneNumber)
+    } else {
+      this.signedUp = $event.smsVerified
+      this.popUp = $event.popUpClose
+      console.log("SIGNED UP", $event.smsVerified, $event.popUpClose)
+    }
   }
 }

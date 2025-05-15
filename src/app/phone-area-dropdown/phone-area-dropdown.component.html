@@ -3,7 +3,7 @@
     <div class="selected-country" (click)="showDropdown = !showDropdown">
       <!-- <img [src]="selectedCountry.flagIcon" [alt]="selectedCountry.name" class="flag-icon"> -->
       <span style="font-size: 1.5vmax; margin-right: 5%;">{{ selectedCountry.flag}}</span>
-      <span style="font-size: 1vmax; margin-right: 10%;">{{ selectedCountry.country }}</span>
+      <span style="font-size: 1vmax; margin-right: 10%; font-size: 16px;">{{ selectedCountry.country }}</span>
       <mat-icon *ngIf="!showDropdown" fontIcon="expand_more"></mat-icon>
       <mat-icon *ngIf="showDropdown" fontIcon="expand_less"></mat-icon>
     </div>

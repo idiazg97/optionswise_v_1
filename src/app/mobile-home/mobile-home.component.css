@@ -6,13 +6,56 @@
     background-color: #0E2D1C;
     flex-direction: column;
     padding: 0px;
+    overflow: hidden;
 }
 
 .call-to-action {
     font-family: sans-serif;
     color: rgb(132, 127, 127);
-    font-size: clamp(24px, 2vw, 60px);
+    font-size: 3vmax;
     margin: 0px;
     margin-top: 5vh;
     font-weight: 200;
 }
+
+.signed-up-text { 
+    font-family: sans-serif;
+    color: white;
+    font-size: clamp(18px, 2vw, 26px);
+    margin: 0px;
+    line-height: 150%;
+    font-weight: 500;
+    text-align: flex-start;
+    overflow: hidden;
+    border-right: .15em solid #42E8BD; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation: 
+      typing 3.5s steps(40, end),
+      blink-caret .75s step-end infinite;
+}
+
+@keyframes ellipsis {
+    to {
+      width: 1.25em;    
+    }
+  }
+  
+@-webkit-keyframes ellipsis {
+    to {
+        width: 1.25em;    
+    }
+}
+
+/* The typing effect */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 80% }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #42E8BD; }
+  }
